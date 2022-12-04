@@ -1,0 +1,95 @@
+<configuration>
+    <!-- jdbc 连接的 URL -->
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://master:3306/hive?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8</value>
+    </property>
+
+    <!-- jdbc 连接的 Driver-->
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.cj.jdbc.Driver</value>
+    </property>
+
+    <!-- jdbc 连接的 username-->
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>root</value>
+    </property>
+
+    <!-- jdbc 连接的 password -->
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>123456</value>
+    </property>
+
+    <!-- Hive 元数据存储版本的验证 -->
+    <property>
+        <name>hive.metastore.schema.verification</name>
+        <value>false</value>
+    </property>
+
+    <!--元数据存储授权-->
+    <property>
+        <name>hive.metastore.event.db.notification.api.auth</name>
+        <value>false</value>
+    </property>
+
+    <!-- 指定存储元数据要连接的地址 -->
+    <property>
+        <name>hive.metastore.uris</name>
+        <value>thrift://master:9083</value>
+    </property>
+
+    <!-- 指定 hiveserver2 连接的 host -->
+    <property>
+        <name>hive.server2.thrift.bind.host</name>
+        <value>master</value>
+    </property>
+
+    <!-- 指定 hiveserver2 连接的端口号 -->
+    <property>
+        <name>hive.server2.thrift.port</name>
+        <value>10000</value>
+    </property>
+
+    <property>
+        <name>hive.zookeeper.quorum</name>
+        <value>master,slave1,slave2</value>
+    </property>
+
+    <property>
+        <name>hive.zookeeper.client.port</name>
+        <value>2181</value>
+    </property>
+
+    <!-- Hive 默认在 HDFS 的工作目录 -->
+    <property>
+        <name>hive.metastore.warehouse.dir</name>
+        <value>hdfs://master:8020/user/hive/warehouse</value>
+    </property>
+
+    <property>
+        <name>hive.spark.client.server.connect.timeout</name>
+        <value>100000ms</value>
+    </property>
+
+    <!--Spark依赖位置（注意：端口号8020必须和namenode的端口号一致）-->
+    <property>
+        <name>spark.yarn.jars</name>
+        <value>hdfs://master:8020/spark-jars/*</value>
+    </property>
+
+    <!--Hive执行引擎-->
+    <property>
+        <name>hive.execution.engine</name>
+        <value>spark</value>
+    </property>
+
+    <property>
+        <name>hive.exec.dynamic.partition.mode</name>
+        <value>nonstrict</value>
+    </property>
+
+</configuration>
+
